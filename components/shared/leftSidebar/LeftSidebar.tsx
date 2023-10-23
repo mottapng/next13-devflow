@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const LeftSidebar = () => {
+export const LeftSidebar = () => {
   const pathname = usePathname();
 
   return (
@@ -73,5 +73,3 @@ const LeftSidebar = () => {
     </div>
   );
 };
-
-export default LeftSidebar;

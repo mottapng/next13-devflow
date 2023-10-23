@@ -9,7 +9,7 @@ interface RenderTagProps {
   showCount?: boolean;
 }
 
-const RenderTag = ({ _id, name, totalQuestions, showCount }: RenderTagProps) => {
+export const RenderTag = ({ _id, name, totalQuestions, showCount }: RenderTagProps) => {
   return (
     <div>
       <Link href={`/tags/${_id}`} className="flex justify-between gap-2">
@@ -21,5 +21,3 @@ const RenderTag = ({ _id, name, totalQuestions, showCount }: RenderTagProps) => 
     </div>
   );
 };
-
-export default RenderTag;

@@ -43,7 +43,7 @@ const NavContent = () => {
   );
 };
 
-const MobileNav = () => {
+export const MobileNav = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -90,5 +90,3 @@ const MobileNav = () => {
     </Sheet>
   );
 };
-
-export default MobileNav;

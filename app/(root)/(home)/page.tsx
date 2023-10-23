@@ -1,7 +1,7 @@
-import QuestionCard from "@/components/cards/QuestionCard";
-import Filters from "@/components/shared/Filters";
-import NoResult from "@/components/shared/NoResult";
-import LocalSearch from "@/components/shared/search/LocalSearch";
+import { QuestionCard } from "@/components/cards/QuestionCard";
+import { Filters } from "@/components/shared/Filters";
+import { NoResult } from "@/components/shared/NoResult";
+import { LocalSearch } from "@/components/shared/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import { homePageFilters } from "@/constants/filters";
 import Link from "next/link";

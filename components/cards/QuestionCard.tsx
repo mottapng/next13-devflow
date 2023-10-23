@@ -1,7 +1,7 @@
 import React from "react";
-import RenderTag from "../shared/RenderTag";
+import { RenderTag } from "../shared/RenderTag";
 import Link from "next/link";
-import Metric from "../shared/Metric";
+import { Metric } from "../shared/Metric";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
 
 interface QuestionProps {
@@ -24,7 +24,7 @@ interface QuestionProps {
   };
 }
 
-const QuestionCard = ({ question }: QuestionProps) => {
+export const QuestionCard = ({ question }: QuestionProps) => {
   return (
     <div className="card-wrapper rounded-[10px] p-9 dark:bg-dark-400 sm:px-11">
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
@@ -83,5 +83,3 @@ const QuestionCard = ({ question }: QuestionProps) => {
     </div>
   );
 };
-
-export default QuestionCard;

@@ -10,7 +10,7 @@ interface NoResultProps {
   linkTitle: string;
 }
 
-const NoResult = ({ title, description, link, linkTitle }: NoResultProps) => {
+export const NoResult = ({ title, description, link, linkTitle }: NoResultProps) => {
   return (
     <div className="mt-10 flex w-full flex-col items-center justify-center">
       <Image
@@ -41,5 +41,3 @@ const NoResult = ({ title, description, link, linkTitle }: NoResultProps) => {
     </div>
   );
 };
-
-export default NoResult;

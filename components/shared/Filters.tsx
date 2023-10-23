@@ -16,7 +16,7 @@ interface filtersSelectProps {
   containerClasses?: string;
 }
 
-const Filters = ({ filters, otherClasses, containerClasses }: filtersSelectProps) => {
+export const Filters = ({ filters, otherClasses, containerClasses }: filtersSelectProps) => {
   return (
     <>
       <div className={containerClasses}>
@@ -42,5 +42,3 @@ const Filters = ({ filters, otherClasses, containerClasses }: filtersSelectProps
     </>
   );
 };
-
-export default Filters;

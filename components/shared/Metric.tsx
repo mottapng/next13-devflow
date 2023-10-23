@@ -12,7 +12,7 @@ interface MetricProps {
   isAuthor?: boolean;
 }
 
-const Metric = ({ imgUrl, alt, value, title, href, textStyles, isAuthor }: MetricProps) => {
+export const Metric = ({ imgUrl, alt, value, title, href, textStyles, isAuthor }: MetricProps) => {
   const metricContent = (
     <>
       <Image
@@ -44,5 +44,3 @@ const Metric = ({ imgUrl, alt, value, title, href, textStyles, isAuthor }: Metri
 
   return <div className="flex-center flex-wrap gap-1">{metricContent}</div>;
 };
-
-export default Metric;

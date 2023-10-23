@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import RenderTag from "../RenderTag";
+import { RenderTag } from "../RenderTag";
 
 const questions = [
   {
@@ -23,7 +23,7 @@ const tags = [
   { name: "express", _id: "5", totalQuestions: 2 }
 ];
 
-const RightSidebar = () => {
+export const RightSidebar = () => {
   return (
     <div className="custom-scrollbar background-light900_dark200 light-border background-light900_dark200 no-scrollbar sticky right-0 top-0 flex h-screen flex-col justify-between border-l px-6 pb-6 pt-36 shadow-light-300 first-line:overflow-y-auto dark:shadow-none max-xl:hidden lg:w-[350px]">
       <section className="flex h-full flex-col">
@@ -62,5 +62,3 @@ const RightSidebar = () => {
     </div>
   );
 };
-
-export default RightSidebar;

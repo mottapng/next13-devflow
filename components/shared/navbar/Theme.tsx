@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import { themes } from "@/constants";
 
-const Theme = () => {
+export const Theme = () => {
   const { mode, setMode } = useTheme();
 
   return (
@@ -74,5 +74,3 @@ const Theme = () => {
     </Menubar>
   );
 };
-
-export default Theme;
