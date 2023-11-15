@@ -21,11 +21,21 @@ import { Input } from "@/components/ui/input";
 import { questionsSchema } from "@/lib/validations";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
+import { useTheme } from "@/context/ThemeProvider";
+import { usePathname, useRouter } from "next/navigation";
 
 const type: any = "create";
 
-export const Question = () => {
+interface Props {
+  mongoUserId: string;
+}
+
+export const Question = ({ mongoUserId }: Props) => {
+  const { mode } = useTheme();
   const editorRef = useRef(null);
+  const router = useRouter();
+  const pathname = usePathname();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof questionsSchema>>({
@@ -37,10 +47,19 @@ export const Question = () => {
     }
   });
 
-  function onSubmit(values: z.infer<typeof questionsSchema>) {
+  async function onSubmit(values: z.infer<typeof questionsSchema>) {
     setIsSubmitting(true);
 
     try {
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: pathname
+      });
+
+      router.push("/");
     } catch (error) {
     } finally {
       setIsSubmitting(false);
@@ -97,7 +116,7 @@ export const Question = () => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Input
-                  className="no-focus paragraph-regular light-border-2 text-dark300_light700 min-h-[56px] border"
+                  className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                   {...field}
                 />
               </FormControl>
@@ -124,6 +143,10 @@ export const Question = () => {
                     (editorRef.current = editor)
                   }
                   initialValue=""
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => {
+                    field.onChange(content);
+                  }}
                   init={{
                     height: 350,
                     menubar: false,
@@ -146,9 +169,21 @@ export const Question = () => {
                     ],
                     toolbar:
                       "undo redo | " +
-                      "codesample | bold italic forecolor | alignleft aligncenter " +
+                      "codesample | bold italic forecolor | alignleft aligncenter |" +
                       "alignright alignjustify | bullist numlist",
-                    content_style: "body { font-family: Inter; font-size:16px }"
+                    content_style: "body { font-family:Inter; font-size:16px }",
+                    skin:
+                      mode === "dark" ||
+                      (mode === "system" &&
+                        window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "oxide-dark"
+                        : "oxide",
+                    content_css:
+                      mode === "dark" ||
+                      (mode === "system" &&
+                        window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light"
                   }}
                 />
               </FormControl>
